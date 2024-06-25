@@ -4,8 +4,8 @@ import entities.enums.Stats;
 
 public class Task {
 
-	private String task;
-	private Stats stats;
+	protected String task;
+	protected Stats stats;
 	
 	public Task(String task, Stats stats) {
 		this.task = task;
@@ -27,10 +27,5 @@ public class Task {
 	public void setStats(Stats stats) {
 		this.stats = stats;
 	}
-	
-	
-	
-	
-	
 	
 }

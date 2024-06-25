@@ -1,17 +1,17 @@
 package taskList;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 
 import entities.Options;
-import entities.Task;
 
 public class App {
 
 	public static void main(String[] args) {
 		
-		List <Task> list = new ArrayList<>();
-		Options op = new Options();
+		Locale.setDefault(Locale.US);
+		Options op = null;
+		
+		
 		
 		
 

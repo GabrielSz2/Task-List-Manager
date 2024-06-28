@@ -1,5 +1,8 @@
 package taskList;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -97,13 +100,42 @@ public class App {
 		else {
 			System.out.println("Tarefas: ");
 			for (int i=0; i < list.size(); i++) {
-				System.out.println(i + ": " + list.get(i).toString());
+				System.out.println((i+1) + ": " + list.get(i).toString());
 			}
 		}
 	}
 	
 	private static void exit() {
-		System.out.println("Saindo...");
+		System.out.print("Deseja salvar em um bloco de notas na area de trabalho? (responda com:[y/n]): ");
+		char c = sc.next().charAt(0);
+		
+		if (c == 'y' || c == 'Y') {
+			System.out.println();
+			
+			System.out.print("Digite o nome para o bloco de notas: ");
+			sc.nextLine();
+			String note = sc.nextLine();
+			
+			String path = "C:\\Users\\gabriel.souza\\Desktop\\" + note + ".txt";
+			
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
+				bw.write("Tarefas: \n");
+				int piu=0;
+				for(Task x : list) {
+					bw.write((piu +1) + ": " + x.toString());
+					bw.newLine();
+					piu += 1;
+				}
+			}
+			catch(IOException k) {
+				k.printStackTrace();
+			}	
+			System.out.println("Salvando e saindo...");
+			
+		}else {
+			System.out.println("Saindo...");
+		}
+		
 		
 	}
 	
